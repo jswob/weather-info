@@ -4,6 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'weather-info',
     environment,
+    OPENWEATHERMAP_API_KEY: process.env.OPENWEATHERMAP_API_KEY,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
