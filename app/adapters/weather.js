@@ -1,11 +1,16 @@
-import DS from 'ember-data';
+import DS from "ember-data";
 import ENV from "weather-info/config/environment";
-import fetch from 'fetch';
+import fetch from "fetch";
 
 export default DS.JSONAPIAdapter.extend({
-    host: "https://api.openweathermap.org",
-    namespace: "data/2.5",
-    queryRecord(store, type, query) {
-        return fetch('https://api.openweathermap.org/data/2.5/weather?id=' + query.id + "&appid=" + ENV.OPENWEATHERMAP_API_KEY);
-    }
+  findRecord(store, type, id) {
+    return fetch(
+      "https://api.openweathermap.org/data/2.5/weather?id=" +
+        id +
+        "&appid=" +
+        ENV.OPENWEATHERMAP_API_KEY
+    ).then(function(response) {
+      return response.json();
+    });
+  }
 });
