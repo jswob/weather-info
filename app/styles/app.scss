@@ -1,1 +1,45 @@
 @import 'ember-paper';
+
+html, body {
+    height: 100%;
+}
+
+body > .ember-view {
+    height: 100%;
+}
+
+.animated-background {
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("dt_bg/0.jpg");
+  &--1 {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("dt_bg/1.jpg");
+  }
+  &--2 {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("dt_bg/2.jpg");
+  }
+  &--3 {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("dt_bg/3.jpg");
+  }
+  &--4 {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("dt_bg/4.jpg");
+  }
+}
