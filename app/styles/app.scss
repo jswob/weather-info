@@ -1,16 +1,20 @@
 $primary: "purple";
-@import 'ember-paper';
+@import "ember-paper";
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body > .ember-view {
-    height: 100%;
+  height: 100%;
 }
 
 .nav-bar {
   height: 72px;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: rgba($color: #ffffff, $alpha: 0.4);
   .logo-wrapper {
     width: 223px;
@@ -18,69 +22,78 @@ body > .ember-view {
       height: 72px;
     }
   }
-  .main-input-container {
-    max-width: 800px;
+  .main-input-wrapper {
     min-width: 200px;
-    height: 46px;
-    font-size: 24px;
-    border-radius: 20px;
-    padding-left: 25px;
-    padding-right: 10px; 
-    margin-left: 15px;
-    margin-right: 15px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    border: 3px solid purple; 
-    &:focus-within {
-      border: 3px solid lightgreen;
-    }
-    &.error {
-      border: 3px solid lightcoral;
-    }
-    .main-input {
-      height: 98%;
-      border: 0px;
-      &:focus {
-        outline: 0;
+    .main-input-container {
+      max-width: 800px;
+      width: 95%;
+      height: 46px;
+      font-size: 24px;
+      border-radius: 20px;
+      padding-left: 25px;
+      padding-right: 10px;
+      margin-left: 15px;
+      margin-right: 15px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      border: 3px solid purple;
+      &:focus-within {
+        border: 3px solid lightgreen;
+      }
+      &.error {
+        border: 3px solid lightcoral;
+      }
+      .main-input {
+        height: 98%;
+        border: 0px;
+        min-width: 80px;
+        &:focus {
+          outline: 0;
+        }
+      }
+      .main-nav-wrapper {
+        min-width: 200px;
+      }
+      .menu-wrapper {
+        min-width: 24px;
+        .paper-icon {
+          min-width: 24px;
+        }
       }
     }
-    .paper-icon {
-      min-width: 24px;
-    }
-
   }
 }
 
-
 .animated-background {
-  height: 100%; 
+  height: 100%;
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("dt_bg/0.jpg");
   &--1 {
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("dt_bg/1.jpg");
   }
   &--2 {
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("dt_bg/2.jpg");
   }
   &--3 {
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("dt_bg/3.jpg");
   }
   &--4 {
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
