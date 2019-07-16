@@ -45,6 +45,7 @@
     "ember-resolver": "^5.0.1",
     "ember-responsive": "^3.0.4",
     "ember-source": "~3.10.0",
+    "ember-transition-helper": "^1.0.0",
     "ember-welcome-page": "^4.0.0",
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^9.0.1",
