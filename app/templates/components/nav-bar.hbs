@@ -5,7 +5,15 @@
 {{/if}}
 <div class="flex-100 layout-row layout-align-center-center main-input-wrapper">
   <div class="main-input-container flex-95 layout-row">
-    <input class="main-input flex-100" type="text" placeholder="Search for location">
+    <p id="message">{{message}}</p>
+    {{place-autocomplete-field
+      value= model.address
+      handlerController= this
+      inputClass= 'main-input flex-100'
+      focusOutCallback="done"
+      placeChangedCallback="placeChanged"
+      placeholder="Custom placeholder"
+    }}
     {{#paper-button iconButton=true}}{{paper-icon "search"}}{{/paper-button}} 
   </div>
 </div>
