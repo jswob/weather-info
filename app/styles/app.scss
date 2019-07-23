@@ -68,12 +68,16 @@ body > .ember-view {
       &.error {
         border: 3px solid lightcoral;
       }
-      .main-input {
-        height: 98%;
-        border: 0px;
-        min-width: 80px;
-        &:focus {
-          outline: 0;
+      div {
+        width:100%;
+        .main-input {
+          width: 100%;
+          height: 98%;
+          border: 0px;
+          min-width: 80px;
+          &:focus {
+            outline: 0;
+          }
         }
       }
       .main-nav-wrapper {

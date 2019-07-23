@@ -9,12 +9,12 @@
     {{place-autocomplete-field
       value= model.address
       handlerController= this
-      inputClass= 'main-input flex-100'
+      inputClass= 'main-input flex-100 place-autocomplete--input'
       focusOutCallback="done"
       placeChangedCallback="placeChanged"
-      placeholder="Custom placeholder"
+      placeholder="Enter city name or address"
     }}
-    {{#paper-button iconButton=true}}{{paper-icon "search"}}{{/paper-button}} 
+    {{#paper-button iconButton=true}}{{paper-icon "search"}}{{/paper-button}}
   </div>
 </div>
 <div class="layout-row layout-align-center-center menu-wrapper">
