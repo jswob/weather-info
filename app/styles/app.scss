@@ -3,11 +3,36 @@ $primary: "purple";
 
 html,
 body {
+  position: relative;
   height: 100%;
 }
 
 body > .ember-view {
   height: 100%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  padding: 5px;
+  background-color: rgba($color: #ffffff, $alpha: 0.4);
+  text-align: center;
+  height: 62px;
+  border-radius: 35px 35px 0 0;
+  .logo-wrapper {
+    margin-left: 25px;
+    width: 223px;
+    .logo {
+      height: 52px;
+    }
+  }
+  span {
+    font-size: 18px;
+    margin-right: 25px;
+  }
 }
 
 .nav-bar {
