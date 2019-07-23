@@ -25,6 +25,14 @@ body > .ember-view {
   .logo-wrapper {
     margin-left: 25px;
     width: 223px;
+    &--mobile {
+      margin-left: auto;
+      margin-right: auto;
+      width: 223px;
+      .logo {
+        height: 52px;
+      }
+    }
     .logo {
       height: 52px;
     }
