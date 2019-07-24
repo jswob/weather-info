@@ -17,6 +17,7 @@ body > .ember-view {
   bottom: 0;
   left: 25%;
   width: 50%;
+  min-width: 188px;
   padding: 5px;
   background-color: rgba($color: #ffffff, $alpha: 0.4);
   text-align: center;
