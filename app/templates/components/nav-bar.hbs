@@ -4,7 +4,7 @@
   </div>
 {{/if}}
 <div class="flex-100 layout-column layout-align-center-center main-input-wrapper">
-  <div class="main-input-container flex-95 layout-row">
+  <div class={{inputClasses}}>
     <p id="message">{{message}}</p>
     {{place-autocomplete-field
       value= address
@@ -17,7 +17,9 @@
       {{paper-icon "search"}}
     {{/paper-button}}
   </div>
-  {{errorMessage}}
+  <div class="error-message">
+    <span>{{errorMessage}}</span>
+  </div>
 </div>
 <div class="layout-row layout-align-center-center menu-wrapper">
   {{#if media.isDesktop}}

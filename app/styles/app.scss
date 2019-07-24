@@ -44,20 +44,32 @@ body > .ember-view {
   }
 }
 
+.error {
+  border: 3px solid darkred !important;
+}
+
 .nav-bar {
-  height: 72px;
+  height: 88px;
   position: fixed;
   top: 0;
   width: 100%;
   background-color: rgba($color: #ffffff, $alpha: 0.4);
   .logo-wrapper {
-    width: 223px;
+    width: 276px;
     .logo {
-      height: 72px;
+      height: 88px;
     }
   }
   .main-input-wrapper {
     min-width: 200px;
+    .error-message {
+      margin-top: 1px;
+      text-align: center;
+      color: darkred;
+      min-height: 23px;
+      font-weight: 700;
+      font-size: 20px;
+    }
     .main-input-container {
       max-width: 800px;
       width: 95%;
@@ -68,14 +80,12 @@ body > .ember-view {
       padding-right: 10px;
       margin-left: 15px;
       margin-right: 15px;
+      margin-top: 18px;
       background-color: #ffffff;
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
       border: 3px solid purple;
       &:focus-within {
         border: 3px solid lightgreen;
-      }
-      &.error {
-        border: 3px solid lightcoral;
       }
       div {
         width:100%;
