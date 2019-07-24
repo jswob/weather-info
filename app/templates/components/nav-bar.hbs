@@ -3,19 +3,21 @@
     <img class="logo" src="assets/logo/logo_transparent.png" alt="swoboda">
   </div>
 {{/if}}
-<div class="flex-100 layout-row layout-align-center-center main-input-wrapper">
+<div class="flex-100 layout-column layout-align-center-center main-input-wrapper">
   <div class="main-input-container flex-95 layout-row">
     <p id="message">{{message}}</p>
     {{place-autocomplete-field
-      value= model.address
+      value= address
       handlerController= this
-      inputClass= 'main-input flex-100 place-autocomplete--input'
-      focusOutCallback="done"
-      placeChangedCallback="placeChanged"
+      inputClass="main-input flex-100 place-autocomplete--input"
+      placeChangedCallback=(action "placeChanged")
       placeholder="Enter city name or address"
     }}
-    {{#paper-button iconButton=true}}{{paper-icon "search"}}{{/paper-button}}
+    {{#paper-button iconButton=true}}
+      {{paper-icon "search"}}
+    {{/paper-button}}
   </div>
+  {{errorMessage}}
 </div>
 <div class="layout-row layout-align-center-center menu-wrapper">
   {{#if media.isDesktop}}
