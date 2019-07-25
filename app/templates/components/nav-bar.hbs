@@ -23,8 +23,8 @@
 </div>
 <div class="layout-row layout-align-center-center menu-wrapper">
   {{#if media.isDesktop}}
-    {{#paper-button raised=true}}sign in{{/paper-button}}
-    {{#paper-button raised=true primary=true}}sign up{{/paper-button}}
+    {{#paper-button raised=true onClick=(transition-to "/auth/sign-in")}}sign in{{/paper-button}}
+    {{#paper-button raised=true primary=true onClick=(transition-to "/auth/sign-up")}}sign up{{/paper-button}}
   {{else}}
     {{#paper-menu as |menu|}}
       {{#menu.trigger}}
@@ -33,11 +33,11 @@
         {{/paper-button}}
       {{/menu.trigger}}
       {{#menu.content width=4 as |content|}}
-        {{#content.menu-item onClick=(transition-to "")}}
+        {{#content.menu-item onClick=(transition-to "/auth/sign-in")}}
           {{paper-icon "fingerprint"}}
           <span>Sign In</span>
         {{/content.menu-item}}
-        {{#content.menu-item onClick=(transition-to "")}}
+        {{#content.menu-item onClick=(transition-to "/auth/sign-up")}}
           {{paper-icon "assignment"}}
           <span>Sign Up</span>
         {{/content.menu-item}}

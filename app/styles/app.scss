@@ -48,6 +48,14 @@ body > .ember-view {
   border: 3px solid darkred !important;
 }
 
+.auth-background {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("dt_bg/0.jpg");
+}
+
 .nav-bar {
   height: 88px;
   position: fixed;
