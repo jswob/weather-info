@@ -1,0 +1,15 @@
+{{#paper-form class="main-form layout-column layout-align-start-center" onSubmit=(action "signIn") as |form|}}
+  <h1>Sign in</h1>
+  
+  {{form.input type="email" label="E-mail" value=email onChange=(action (mut email)) required=true}}
+  {{form.input type="password" label="Password" value=password onChange=(action (mut password)) required=true}}
+  
+  <div class="buttons-wrapper layout-row layout-align-end-center">
+    {{#paper-button raised=true}}
+      Clear
+    {{/paper-button}}
+    {{#form.submit-button raised=true primary=true}}
+      Sign In
+    {{/form.submit-button}}
+  </div>
+{{/paper-form}}
