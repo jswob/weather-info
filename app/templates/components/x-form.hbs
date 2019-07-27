@@ -1,4 +1,9 @@
-<div class={{formMainWrapperClasses}}>{{yield}}</div>
+<div class={{formMainWrapperClasses}}>
+  {{#if isSignUp}}
+    {{x-form/sign-up}}
+  {{else}}
+  {{/if}}
+</div>
 
 <div class={{formDividerClasses}}></div>
 
@@ -9,18 +14,18 @@
   <div class="button-wrapper layout-column layout-align-start-center">
     {{#if isSignUp}}
       <span>If you already have an account</span>
-      {{#paper-button raised=true primary=true onClick=(transition-to "/auth/sign-in")}}
+      {{#paper-button raised=true onClick=(transition-to "/auth/sign-in")}}
         Sign in
       {{/paper-button}}
     {{else}}
       <span>If you don't have an account</span>
-      {{#paper-button raised=true primary=true onClick=(transition-to "/auth/sign-up")}}
+      {{#paper-button raised=true onClick=(transition-to "/auth/sign-up")}}
         Sign up
       {{/paper-button}}
     {{/if}}
   </div>
   <div class="button-wrapper layout-column layout-align-start-center">
     <span>If you want to look at my other projects</span>
-    {{#paper-button raised=true primary=true}}Projects{{/paper-button}}
+    {{#paper-button raised=true}}Projects{{/paper-button}}
   </div>
 </div>

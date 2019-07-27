@@ -13,28 +13,25 @@ export default Component.extend({
 
   classNames: ["form"],
 
-  formNavBarClasses: computed("type", "media.isMobile", function() {
-    const type = this.get("type");
+  formNavBarClasses: computed("media.isMobile", function() {
     const isMobile = this.get("media.isMobile");
     if (isMobile)
-      return "form-nav-bar layout-column layout-align-start-center vertical " + type;
-    return "form-nav-bar layout-column layout-align-start-center horizontal " + type;
+      return "form-nav-bar layout-column layout-align-start-center vertical";
+    return "form-nav-bar layout-column layout-align-start-center horizontal";
   }),
 
-  formMainWrapperClasses: computed("type", "media.isMobile", function() {
-    const type = this.get("type");
+  formMainWrapperClasses: computed("media.isMobile", function() {
     const isMobile = this.get("media.isMobile");
     if (isMobile)
-      return "form-main-wrapper vertical " + type;
-    return "form-main-wrapper horizontal " + type;
+      return "form-main-wrapper vertical";
+    return "form-main-wrapper horizontal";
   }),
 
-  formDividerClasses: computed("type", "media.isMobile", function() {
-    const type = this.get("type");
+  formDividerClasses: computed("media.isMobile", function() {
     const isMobile = this.get("media.isMobile");
     if (isMobile)
-      return "form-divider vertical " + type;
-    return "form-divider horizontal " + type;
+      return "form-divider vertical";
+    return "form-divider horizontal";
   }),
 
   isSignUp: computed("type", function() {
