@@ -1,5 +1,6 @@
 $primary: "purple";
 @import "ember-paper";
+@import "./x-form.scss";
 
 html,
 body {
@@ -96,7 +97,7 @@ body > .ember-view {
         border: 3px solid lightgreen;
       }
       div {
-        width:100%;
+        width: 100%;
         .main-input {
           width: 100%;
           height: 98%;
