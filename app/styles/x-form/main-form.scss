@@ -1,0 +1,19 @@
+.main-form {
+  width: 100%;
+  height: 100%;
+  padding: 35px 0;
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  md-input-container {
+    width: 80%;
+    input {
+      font-size: 24px;
+      width: 100%;
+    }
+  }
+  .buttons-wrapper {
+    width: 80%;
+  }
+}
