@@ -1,8 +1,8 @@
 {{#paper-form class="main-form layout-column layout-align-start-center" onSubmit=(action "createUser") as |form|}}
   <h1>Sign up</h1>
   
-  {{form.input type="email" label="E-mail" value=email onChange=(action (mut email)) required=true}}
-  {{form.input type="password" label="Password" value=password onChange=(action (mut password)) required=true}}
+  {{form.input type="email" label="E-mail" value=user.email onChange=(action (mut user.email))}}
+  {{form.input type="password" label="Password" value=user.password onChange=(action (mut user.password))}}
   
   <div class="buttons-wrapper layout-row layout-align-end-center">
     {{#paper-button raised=true}}
