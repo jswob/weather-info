@@ -3,10 +3,12 @@ import ENV from "weather-info/config/environment";
 import fetch from "fetch";
 
 export default DS.JSONAPIAdapter.extend({
-  findRecord(store, type, id) {
+  queryRecord(store, type, {city, country}) {
     return fetch(
-      "https://api.openweathermap.org/data/2.5/weather?id=" +
-        id +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        city +
+        "," +
+        country +
         "&appid=" +
         ENV.OPENWEATHERMAP_API_KEY
     ).then(function(response) {
