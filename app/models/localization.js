@@ -1,8 +1,8 @@
-import DS from 'ember-data';
-const { Model, attr, belongsTo } = DS;
+import DS from "ember-data";
+const { Model, attr } = DS;
 
 export default Model.extend({
-    city: attr("string"),
-    country: attr("string"),
-    owner: belongsTo("user")
+  cityId: attr("string"),
+  city: attr("string"),
+  country: attr("string")
 });
