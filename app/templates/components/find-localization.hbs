@@ -1,0 +1,10 @@
+<div class={{formClasses}} data-validationError={{errorMessage}}>
+  {{place-autocomplete-field
+    value= address
+    handlerController= this
+    placeChangedCallback=(action "findLocalization")
+    placeholder=""
+  }}
+  <label class={{labelClasses}} for="field-text">Enter Localization</label>
+</div>
+{{yield}}

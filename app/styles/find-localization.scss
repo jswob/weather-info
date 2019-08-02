@@ -1,0 +1,98 @@
+/*
+My take on pure CSS material design inputs and drop-down
+Influenced heavily by: https://codepen.io/sevilayha/pen/IdGKH
+*/
+
+$material-form-label: #000000;
+$material-form-label-focus: #3f51b5;
+$material-form-line: #000000;
+$material-form-line-focus: $material-form-label-focus;
+$material-form-input-text: $material-form-label;
+$material-form-input-text-focus: $material-form-label-focus;
+$material-form-field-invalid-foreground: #d50000;
+
+$material-dropdown-hoverBackground: #e8eaf6;
+$material-dropdown-selectedBackground: #9fa8da;
+$material-labelOffset: 25px;
+$material-textInputPaddingTopBottom: 10px;
+
+.material-form-field {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  position: relative;
+  display: block;
+  color: $material-form-label;
+  padding: $material-labelOffset 0 10px 0;
+  width: 100%;
+  max-width: 600px;
+
+  &::after {
+    content: "\00A0";
+    display: block;
+    color: $material-form-field-invalid-foreground;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+
+  .material-form-field-label {
+    position: absolute;
+    display: block;
+    top: $material-labelOffset + $material-textInputPaddingTopBottom;
+    left: 0px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    pointer-events: none;
+    cursor: text;
+  }
+
+  div:focus-within {
+    & ~ .material-form-field-label {
+      top: $material-labelOffset - ($material-textInputPaddingTopBottom + 5);
+      font-size: 15px;
+    }
+    & ~ .material-form-field-label {
+      color: $material-form-label-focus;
+    }
+  }
+  label.active {
+    top: $material-labelOffset - ($material-textInputPaddingTopBottom + 5);
+    font-size: 15px;
+  }
+  input {
+    padding: $material-textInputPaddingTopBottom 0
+      $material-textInputPaddingTopBottom 0;
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    color: $material-form-input-text;
+    border-bottom: 1px solid $material-form-line;
+    outline: none;
+    width: 100%;
+
+    &:invalid {
+      outline: none;
+      box-shadow: none;
+    }
+    &:focus {
+      outline: none;
+      color: $material-form-input-text-focus;
+      padding-bottom: $material-textInputPaddingTopBottom - 2;
+      border-bottom-width: 3px;
+      border-bottom-color: $material-form-line-focus;
+    }
+  }
+
+  &.material-form-field-invalid {
+    color: $material-form-field-invalid-foreground;
+    &::after {
+      content: attr(data-validationError);
+    }
+    div:focus-within {
+      & ~ .material-form-field-label {
+        color: $material-form-field-invalid-foreground;
+      }
+    }
+  }
+}
