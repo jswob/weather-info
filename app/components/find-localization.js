@@ -1,51 +1,65 @@
 import Component from "@ember/component";
-import { computed } from "@ember/object";
+import { isBlank } from "@ember/utils";
 import { inject as service } from "@ember/service";
+import { next } from "@ember/runloop";
 
 export default Component.extend({
-  store: service(),
+  googlePlaceAutocompleteService: service("google-place-autocomplete"),
   tagName: "",
-  labelClasses: computed("address", function() {
-    const address = this.get("address");
-    let classes = "material-form-field-label";
-    if (address) classes += " active";
-    return classes;
-  }),
-  formClasses: computed("errorMessage", function() {
-    const errorMessage = this.get("errorMessage");
-    let classes = "material-form-field";
-    if (errorMessage) classes += " material-form-field-invalid";
-    return classes;
-  }),
+
+  async _getPlaceDetails(placeId) {
+    const googleRequest = {
+      placeId: placeId,
+      fields: ["address_components", "place_id"]
+    };
+    let placeDetails = await this.get(
+      "googlePlaceAutocompleteService"
+    ).getDetails(googleRequest);
+    this._refreshPrettyResponse(placeDetails);
+  },
+
+  _refreshPrettyResponse(placeDetails) {
+    const placeServiceResult = {};
+    placeDetails = JSON.parse(JSON.stringify(placeDetails));
+    placeDetails.address_components.forEach(address_component => {
+      if (address_component.types[0] === "locality")
+        placeServiceResult.city = address_component.short_name;
+      if (address_component.types[0] === "country")
+        placeServiceResult.country = address_component.short_name;
+    });
+    placeServiceResult.id = placeDetails.place_id;
+    this.set("placeServiceResult", null);
+    next(() => {
+      this.set("placeServiceResult", placeServiceResult);
+    });
+  },
+
   actions: {
-    findLocalization(data) {
-      const place = JSON.parse(JSON.stringify(data, undefined, 2));
-      const localization = {};
-      const isAlreadyInStore = this.store.peekRecord("localization", place.id);
-      if (isAlreadyInStore) return this.set("localization", isAlreadyInStore);
-      if (!place.address_components) {
-        return this.set(
-          "errorMessage",
-          "Could not specify locality for that place."
-        );
+    findPlaceDetails(selectedPlace) {
+      if (isBlank(selectedPlace)) {
+        this.setProperties({
+          selectedPlace: null,
+          predictions: [],
+          placeServiceResult: null
+        });
+        return;
       }
-      place.address_components.forEach(addressComponent => {
-        if (addressComponent.types[0] === "locality")
-          localization.city = addressComponent.long_name;
-        if (addressComponent.types[0] === "country")
-          localization.country = addressComponent.short_name;
+      this._getPlaceDetails(selectedPlace.place_id);
+      this.setProperties({
+        selectedPlace: selectedPlace,
+        predictions: []
       });
-      localization.id = place.id;
-      if (!localization.city || !localization.country)
-        return this.set(
-          "errorMessage",
-          "Could not specify locality for that place."
-        );
-      this.set("errorMessage", null);
-      this.set(
-        "localization",
-        this.store.createRecord("localization", localization)
-      );
+    },
+
+    async requestPredictions(placeServiceInput) {
+      if (isBlank(placeServiceInput)) {
+        this.setProperties({ predictions: [], placeServiceResult: null });
+      }
+      let properties = { input: placeServiceInput };
+      let predictions = await this.get(
+        "googlePlaceAutocompleteService"
+      ).getPlacePredictions(properties);
+      this.set("predictions", predictions);
     }
   }
 });

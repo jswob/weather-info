@@ -1,10 +1,15 @@
-<div class={{formClasses}} data-validationError={{errorMessage}}>
-  {{place-autocomplete-field
-    value= address
-    handlerController= this
-    placeChangedCallback=(action "findLocalization")
-    placeholder=""
-  }}
-  <label class={{labelClasses}} for="field-text">Enter Localization</label>
-</div>
-{{yield}}
+<PaperAutocomplete
+  @placeholder="Find localization"
+  @options={{predictions}}
+  @selected={{selectedPlace.description}}
+  @loadingMessage="Searching localizations..."
+  @onSelectionChange={{action "findPlaceDetails"}}
+  @search={{action "requestPredictions"}}
+  @noMatchesMessage="Oops this localization doesn't exist."
+  @errorMessage={{this.errorMessage}}
+  as |item|>
+  <span class="item-title">
+    <PaperAutocompleteHighlight flags="i" @label={{item.description}} />
+  </span>
+</PaperAutocomplete>
+{{this.errorMessage}}
