@@ -13,6 +13,54 @@ body > .ember-view {
   height: 100%;
 }
 
+md-autocomplete {
+  width: 80%;
+  max-width: 600px !important;
+  input {
+    font-size: 24px;
+    font-weight: 500;
+    width: 100%;
+  }
+}
+
+.app-wrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+}
+
+.main-info {
+  margin-top: 20px;
+  max-width: 500px;
+  text-align: center;
+  img {
+    width: 256px;
+    height: 256px;
+  }
+  h1 {
+    font-size: 42px;
+  }
+  p {
+    font-size: 26px;
+    margin-top: 5px;
+  }
+  &.mobile {
+    margin-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    img {
+      width: 168px;
+      height: 168px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
 .footer {
   position: absolute;
   right: 0;
@@ -59,7 +107,7 @@ body > .ember-view {
 }
 
 .nav-bar {
-  height: 88px;
+  height: 80px;
   position: fixed;
   top: 0;
   width: 100%;
