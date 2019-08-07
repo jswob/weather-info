@@ -7,7 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('forecast');
+  this.route('forecast', {path: "/:localization_id"});
 });
 
 export default Router;
