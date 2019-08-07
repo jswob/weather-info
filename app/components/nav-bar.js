@@ -12,7 +12,10 @@ export default Component.extend({
       const localizationData = this.get("localization");
       if (!localizationData.city && !localizationData.country)
         return this.set("error", "Localization is incorrect!");
-      const localization = await this.store.createRecord("localization", localizationData).save();
+      const localization = await this.store.createRecord("localization", {
+        city: localizationData.city,
+        country: localizationData.country
+      }).save();
       if(localization) 
         return this.router.transitionTo("forecast", localization);
       return this.set("error", "Some bug occur");
