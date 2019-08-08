@@ -7,13 +7,19 @@ import {
   pauseTest,
   click
 } from "@ember/test-helpers";
+import { A } from "@ember/array";
 import hbs from "htmlbars-inline-precompile";
 
 module("Integration | Component | find-loacalization", function(hooks) {
   setupRenderingTest(hooks);
 
-  skip("predictions are displayed", async function(assert) {
-    
+  test("predictions are fetched", async function(assert) {
+    this.set("predictions", A([]));
+    await render(hbs`<FindLocalization @predictions={{this.predictions}} />`);
+    await fillIn("input", "al");
+    await setTimeout(() => resumeTest(), 1000);
+    await pauseTest();
+    assert.equal(this.get("predictions").length, 5);
   });
 
   test("after selecting prediction place description is displayed", async function(assert) {
@@ -22,10 +28,7 @@ module("Integration | Component | find-loacalization", function(hooks) {
     await setTimeout(() => resumeTest(), 1000);
     await pauseTest();
     await click("li");
-    assert.equal(
-      this.element.querySelector('input').value,
-      "Almería, Spain"
-    );
+    assert.equal(this.element.querySelector("input").value, "Almería, Spain");
   });
 
   skip("passed property is formatted", async function(assert) {});
