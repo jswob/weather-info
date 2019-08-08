@@ -1,15 +1,32 @@
-import { module, test } from "qunit";
+import { module, test, skip } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render } from "@ember/test-helpers";
+import {
+  render,
+  fillIn,
+  resumeTest,
+  pauseTest,
+  click
+} from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 
 module("Integration | Component | find-loacalization", function(hooks) {
   setupRenderingTest(hooks);
 
-  test("predictions are displayed", async function(assert) {});
+  skip("predictions are displayed", async function(assert) {
+    
+  });
 
-  test("after selecting prediction place description is displayed", async function(assert) {});
+  test("after selecting prediction place description is displayed", async function(assert) {
+    await render(hbs`<FindLocalization />`);
+    await fillIn("input", "al");
+    await setTimeout(() => resumeTest(), 1000);
+    await pauseTest();
+    await click("li");
+    assert.equal(
+      this.element.querySelector('input').value,
+      "Almería, Spain"
+    );
+  });
 
-  test("passed property is formatted", async function(assert) {});
-
+  skip("passed property is formatted", async function(assert) {});
 });
