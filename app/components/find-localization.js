@@ -1,7 +1,6 @@
 import Component from "@ember/component";
 import { isBlank } from "@ember/utils";
 import { inject as service } from "@ember/service";
-import { next } from "@ember/runloop";
 
 export default Component.extend({
   googlePlaceAutocompleteService: service("google-place-autocomplete"),
@@ -28,14 +27,11 @@ export default Component.extend({
         placeServiceResult.country = address_component.short_name;
     });
     placeServiceResult.id = placeDetails.place_id;
-    this.set("placeServiceResult", null);
-    next(() => {
-      this.set("placeServiceResult", placeServiceResult);
-    });
+    this.set("placeServiceResult", placeServiceResult);
   },
 
   actions: {
-    findPlaceDetails(selectedPlace) {
+    async findPlaceDetails(selectedPlace) {
       if (isBlank(selectedPlace)) {
         this.setProperties({
           selectedPlace: null,
@@ -44,7 +40,7 @@ export default Component.extend({
         });
         return;
       }
-      this._getPlaceDetails(selectedPlace.place_id);
+      await this._getPlaceDetails(selectedPlace.place_id);
       this.setProperties({
         selectedPlace: selectedPlace,
         predictions: []
