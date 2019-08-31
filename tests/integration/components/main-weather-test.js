@@ -1,13 +1,13 @@
-import { module, test, skip } from "qunit";
+import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render, click } from "@ember/test-helpers";
+import { render, click, pauseTest } from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 import { setBreakpoint } from "ember-responsive/test-support";
 
 module("Integration | Component | main-weather", function(hooks) {
   setupRenderingTest(hooks);
 
-  skip("should display all necessary data", async function(assert) {
+  test("should display all necessary data", async function(assert) {
     assert.expect(6);
 
     const weatherData = {
@@ -35,7 +35,7 @@ module("Integration | Component | main-weather", function(hooks) {
       "description is ok"
     );
     assert.equal(
-      this.element.querySelector(".temp").textContent,
+      this.element.querySelector(".temp-wrapper").textContent.trim(),
       "26 °C °C|F",
       "temperature is ok"
     );
@@ -51,12 +51,12 @@ module("Integration | Component | main-weather", function(hooks) {
     );
     assert.equal(
       this.element.querySelector(".time").textContent,
-      "Wed, 11 am",
+      "Sa, 7 am",
       "time is ok"
     );
   });
 
-  skip('should change temperature unit after clicking on "°C|F" buttons', async function(assert) {
+  test('should change temperature unit after clicking on "°C|F" buttons', async function(assert) {
     const weatherData = {
       temp: 298.77
     };
@@ -65,7 +65,7 @@ module("Integration | Component | main-weather", function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "26 °C °C|F",
+      "26 °C ",
       "on start show temperature in celsius"
     );
 
@@ -73,7 +73,7 @@ module("Integration | Component | main-weather", function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "78 F °C|F",
+      "78 F ",
       "after clicking on fahrenheit-button show temperature in fahrenheit"
     );
 
@@ -81,12 +81,12 @@ module("Integration | Component | main-weather", function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "26 °C °C|F",
+      "26 °C ",
       "after clicking on celsius-button show temperature in celsius"
     );
   });
 
-  skip("should be responsive", async function(assert) {
+  test("should be responsive", async function(assert) {
     const weatherData = {
       description: "Light Rain"
     };
@@ -100,6 +100,8 @@ module("Integration | Component | main-weather", function(hooks) {
     );
 
     setBreakpoint("mobile");
+
+    await pauseTest();
 
     assert.notOk(
       this.element.querySelector(".description"),
