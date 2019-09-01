@@ -1,0 +1,6 @@
+<div class="single-forecast {{if this.isActive "active"}}" onclick={{action "selectForecast"}}>
+  <span class="day">{{moment-format this.convertedTime "dd"}}</span>
+  <span class="hour">{{moment-format this.convertedTime "k a"}}</span>
+  <img class="weather-icon" src={{this.imageSource}} alt={{this.forecast.description}}>
+  <span class="temp">{{this.convertedTemp}}</span><button class="celsius-button" onclick={{action "changeToCelsius"}}>°C</button>|<button class="fahrenheit-button" {{action "changeToFahrenheit"}}>F</button>
+</div>

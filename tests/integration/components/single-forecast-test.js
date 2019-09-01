@@ -31,8 +31,8 @@ module("Integration | Component | single-forecast", function(hooks) {
       "image has correct source"
     );
     assert.equal(
-      this.element.querySelector(".temp-wrapper").textContent,
-      "26 °C °C|F",
+      this.element.querySelector(".temp").textContent,
+      "26 °C ",
       "temperature is correctly displayed"
     );
   });
@@ -50,24 +50,24 @@ module("Integration | Component | single-forecast", function(hooks) {
     );
 
     assert.equal(
-      this.element.querySelector(".temp-wrapper").textContent,
-      "26 °C °C|F",
+      this.element.querySelector(".temp").textContent,
+      "26 °C ",
       "temperature is displayed in celsius unit"
     );
 
-    await click(".fahrenheid-button");
+    await click(".fahrenheit-button");
 
     assert.equal(
-      this.element.querySelector(".temp-wrapper").textContent,
-      "78 F °C|F",
+      this.element.querySelector(".temp").textContent,
+      "78 F ",
       "temperature is displayed in fahrenheit unit"
     );
 
     await click(".celsius-button");
 
     assert.equal(
-      this.element.querySelector(".temp-wrapper").textContent,
-      "26 °C °C|F",
+      this.element.querySelector(".temp").textContent,
+      "26 °C ",
       "temperature is displayed in celsius unit"
     );
   });
@@ -99,11 +99,12 @@ module("Integration | Component | single-forecast", function(hooks) {
       forecasts[0],
       "starts with default forecast"
     );
-
+    
     await click(".single-forecast:last-child");
 
     assert.equal(
-      this.get("selectedForecast", forecasts[1]),
+      this.get("selectedForecast"),
+      forecasts[1],
       "after clicking on second forecast switch selected forecast"
     );
 
@@ -111,7 +112,7 @@ module("Integration | Component | single-forecast", function(hooks) {
 
     assert.equal(
       this.get("selectedForecast"),
-      forecasts[1],
+      forecasts[0],
       "switch forecast again to default"
     );
   });
@@ -138,10 +139,11 @@ module("Integration | Component | single-forecast", function(hooks) {
       {{/each}}
     `);
 
-    assert.notOk(
+    assert.equal(
       this.element
         .querySelector(".single-forecast:last-child")
         .className.search("active"),
+      -1,
       "starts with last element marked as unactive"
     );
     assert.ok(
@@ -153,10 +155,11 @@ module("Integration | Component | single-forecast", function(hooks) {
 
     await click(".single-forecast:last-child");
 
-    assert.notOk(
+    assert.equal(
       this.element
         .querySelector(".single-forecast:first-child")
         .className.search("active"),
+      -1,
       "after clicking switch default element to unactive"
     );
     assert.ok(
@@ -168,10 +171,11 @@ module("Integration | Component | single-forecast", function(hooks) {
 
     await click(".single-forecast:first-child");
 
-    assert.notOk(
+    assert.equal(
       this.element
         .querySelector(".single-forecast:last-child")
         .className.search("active"),
+      -1,
       "switch last element again to unactive"
     );
     assert.ok(
