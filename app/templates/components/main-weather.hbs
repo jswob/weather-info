@@ -2,7 +2,7 @@
   <div class="left">
     <h3 class="localization">{{this.localization}}</h3>
     <h5 class="description">{{this.weather.description}}</h5>
-    <img class="weatherIcon" src={{this.iconUrl}} alt={{this.weather.description}}>
+    <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
     <div class="temp-wrapper">
       <span class="temp">{{convertedTemp}}</span><button class="celsius-button" onclick={{action "changeToCelsius"}}>°C</button>|<button class="fahrenheit-button" {{action "changeToFahrenheit"}}>F</button>        
     </div>
