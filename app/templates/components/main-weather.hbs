@@ -14,7 +14,6 @@
 {{else}}
   <h3 class="localization">{{this.localization}}</h3>
   <span class="time">{{moment-format convertedTime "dd, k a" class="time"}}</span>
-  <img class="weatherIcon" src={{this.iconUrl}} alt={{this.weather.description}}>
   <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
   <TemperatureUnitSwitch @temperature={{this.weather.temp}} />
   <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>

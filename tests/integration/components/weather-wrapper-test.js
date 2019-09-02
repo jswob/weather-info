@@ -1,6 +1,7 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
 import { render, click } from "@ember/test-helpers";
+import { A } from "@ember/array";
 import hbs from "htmlbars-inline-precompile";
 
 module("Integration | Component | weather-wrapper", function(hooks) {
@@ -29,10 +30,9 @@ module("Integration | Component | weather-wrapper", function(hooks) {
   });
 
   test("should change selected main weather on click on diffrent forecast", async function(assert) {
-    const forecasts = [{ description: "foo" }, { description: "baz" }];
+    const forecasts = A([{ description: "foo" }, { description: "baz" }]);
     this.set("forecasts", forecasts);
     await render(hbs`<WeatherWrapper @forecasts={{this.forecasts}} />`);
-
     assert.equal(
       this.element.querySelector(".description").textContent,
       "foo",
@@ -47,7 +47,7 @@ module("Integration | Component | weather-wrapper", function(hooks) {
       "after click second forecast become main"
     );
 
-    await click(".single-forecast:first-child");
+    await click(".single-forecast");
 
     assert.equal(
       this.element.querySelector(".description").textContent,

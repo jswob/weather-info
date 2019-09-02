@@ -1,0 +1,4 @@
+<MainWeather @weather={{this.selectedForecast}} />
+{{#each this.forecasts as |forecast|}}
+  <SingleForecast @forecast={{forecast}} @selectedForecast={{this.selectedForecast}} />
+{{/each}}
