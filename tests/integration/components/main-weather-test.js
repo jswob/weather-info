@@ -8,7 +8,7 @@ module("Integration | Component | main-weather", function(hooks) {
   setupRenderingTest(hooks);
 
   test("should display all necessary data", async function(assert) {
-    assert.expect(6);
+    assert.expect(7);
 
     const weatherData = {
       temp: 298.77,
@@ -53,6 +53,11 @@ module("Integration | Component | main-weather", function(hooks) {
       this.element.querySelector(".time").textContent,
       "Sa, 7 am",
       "time is ok"
+    );
+    assert.equal(
+      this.element.querySelector(".weather-icon").src,
+      "http://openweathermap.org/img/wn/10n@2x.png",
+      "image has correct source"
     );
   });
 
