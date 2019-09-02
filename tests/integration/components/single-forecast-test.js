@@ -37,41 +37,6 @@ module("Integration | Component | single-forecast", function(hooks) {
     );
   });
 
-  test("should change temperature unit", async function(assert) {
-    const weatherData = {
-      temp: 298.77,
-      icon: "10n",
-      time: 1406106000
-    };
-    this.set("forecast", weatherData);
-    this.set("isCelsius", true);
-    await render(
-      hbs`<SingleForecast @forecast={{this.forecast}} @isCelsius={{this.isCelsius}}/>`
-    );
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "26 °C ",
-      "temperature is displayed in celsius unit"
-    );
-
-    await click(".fahrenheit-button");
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "78 F ",
-      "temperature is displayed in fahrenheit unit"
-    );
-
-    await click(".celsius-button");
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "26 °C ",
-      "temperature is displayed in celsius unit"
-    );
-  });
-
   test("should switch selected forecast on click", async function(assert) {
     const forecasts = [
       {

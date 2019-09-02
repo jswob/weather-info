@@ -3,9 +3,7 @@
     <h3 class="localization">{{this.localization}}</h3>
     <h5 class="description">{{this.weather.description}}</h5>
     <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
-    <div class="temp-wrapper">
-      <span class="temp">{{convertedTemp}}</span><button class="celsius-button" onclick={{action "changeToCelsius"}}>°C</button>|<button class="fahrenheit-button" {{action "changeToFahrenheit"}}>F</button>        
-    </div>
+    <TemperatureUnitSwitch @temperature={{this.weather.temp}} />
   </div>
   <div class="right">
     <span class="time">{{moment-format convertedTime "dd, k a" class="time"}}</span>
@@ -17,9 +15,8 @@
   <h3 class="localization">{{this.localization}}</h3>
   <span class="time">{{moment-format convertedTime "dd, k a" class="time"}}</span>
   <img class="weatherIcon" src={{this.iconUrl}} alt={{this.weather.description}}>
-  <div class="temp-wrapper">
-    <span class="temp">{{convertedTemp}}</span><button class="celsius-button" onclick={{action "changeToCelsius"}}>°C</button>|<button class="fahrenheit-button" {{action "changeToFahrenheit"}}>F</button>        
-  </div>
+  <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
+  <TemperatureUnitSwitch @temperature={{this.weather.temp}} />
   <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>
   <span class="wind">Wind: {{this.weather.wind}} km/h</span>
   <span class="humidity">Humidity: {{this.weather.humidity}}%</span>

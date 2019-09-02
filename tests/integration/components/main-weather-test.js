@@ -1,6 +1,6 @@
 import { module, test } from "qunit";
 import { setupRenderingTest } from "ember-qunit";
-import { render, click, pauseTest } from "@ember/test-helpers";
+import { render } from "@ember/test-helpers";
 import hbs from "htmlbars-inline-precompile";
 import { setBreakpoint } from "ember-responsive/test-support";
 
@@ -56,36 +56,6 @@ module("Integration | Component | main-weather", function(hooks) {
     );
   });
 
-  test('should change temperature unit after clicking on "°C|F" buttons', async function(assert) {
-    const weatherData = {
-      temp: 298.77
-    };
-    this.set("selectedForecast", weatherData);
-    await render(hbs`<MainWeather @weather={{this.selectedForecast}} />`);
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "26 °C ",
-      "on start show temperature in celsius"
-    );
-
-    await click(".fahrenheit-button");
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "78 F ",
-      "after clicking on fahrenheit-button show temperature in fahrenheit"
-    );
-
-    await click(".celsius-button");
-
-    assert.equal(
-      this.element.querySelector(".temp").textContent,
-      "26 °C ",
-      "after clicking on celsius-button show temperature in celsius"
-    );
-  });
-
   test("should be responsive", async function(assert) {
     const weatherData = {
       description: "Light Rain"
@@ -100,8 +70,6 @@ module("Integration | Component | main-weather", function(hooks) {
     );
 
     setBreakpoint("mobile");
-
-    await pauseTest();
 
     assert.notOk(
       this.element.querySelector(".description"),

@@ -1,29 +1,37 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, click } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { module, test } from "qunit";
+import { setupRenderingTest } from "ember-qunit";
+import { render, click } from "@ember/test-helpers";
+import hbs from "htmlbars-inline-precompile";
 
-module('Integration | Component | temperature-unit-switch', function(hooks) {
+module("Integration | Component | temperature-unit-switch", function(hooks) {
   setupRenderingTest(hooks);
 
-  test('should correctly show temperature', async function(assert) {
+  test("should correctly show temperature", async function(assert) {
+    assert.expect(1);
+
     this.set("temperature", 312.23);
-    await render(hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`);
+    await render(
+      hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`
+    );
 
     assert.equal(
       this.element.querySelector(".temp-wrapper").textContent.trim(),
-      "26 °C °C|F",
+      "39 °C °C|F",
       "temperature is ok"
     );
   });
 
-  test('should change temperature unit on click on the unit-button', async function(assert) {
+  test("should change temperature unit on click on the unit-button", async function(assert) {
+    assert.expect(3);
+
     this.set("temperature", 312.23);
-    await render(hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`);
+    await render(
+      hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`
+    );
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "26 °C ",
+      "39 °C ",
       "on start show temperature in celsius"
     );
 
@@ -31,7 +39,7 @@ module('Integration | Component | temperature-unit-switch', function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "78 F ",
+      "103 F ",
       "after clicking on fahrenheit-button show temperature in fahrenheit"
     );
 
@@ -39,9 +47,8 @@ module('Integration | Component | temperature-unit-switch', function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "26 °C ",
+      "39 °C ",
       "after clicking on celsius-button show temperature in celsius"
     );
-  
   });
 });
