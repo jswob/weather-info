@@ -14,20 +14,20 @@ export default Component.extend({
     let placeDetails = await this.get(
       "googlePlaceAutocompleteService"
     ).getDetails(googleRequest);
-    this._refreshPrettyResponse(placeDetails);
+    this._getCityName(placeDetails);
   },
 
-  _refreshPrettyResponse(placeDetails) {
-    const placeServiceResult = {};
+  _getCityName(placeDetails) {
     placeDetails = JSON.parse(JSON.stringify(placeDetails));
-    placeDetails.address_components.forEach(address_component => {
-      if (address_component.types[0] === "locality")
-        placeServiceResult.city = address_component.short_name;
-      if (address_component.types[0] === "country")
-        placeServiceResult.country = address_component.short_name;
+    const placeServiceResult = {};
+    placeDetails.address_components.forEach(place => {
+      if (place.types.includes("locality"))
+        placeServiceResult.city = place.short_name;
+      if (place.types.includes("country"))
+        placeServiceResult.country = place.short_name;
     });
-    placeServiceResult.id = placeDetails.place_id;
-    this.set("placeServiceResult", placeServiceResult);
+    if (placeServiceResult.country && placeServiceResult.city)
+      return this.set("placeServiceResult", placeServiceResult);
   },
 
   actions: {

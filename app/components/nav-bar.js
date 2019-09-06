@@ -1,5 +1,6 @@
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
+import { getOwner } from "@ember/application";
 
 export default Component.extend({
   router: service(),
@@ -12,12 +13,19 @@ export default Component.extend({
       const localizationData = this.get("localization");
       if (!localizationData.city && !localizationData.country)
         return this.set("error", "Localization is incorrect!");
-      const localization = await this.store.createRecord("localization", {
-        city: localizationData.city,
-        country: localizationData.country
-      }).save();
-      if(localization) 
-        return this.router.transitionTo("forecast", localization);
+      const localization = await this.store
+        .createRecord("localization", {
+          city: localizationData.city,
+          country: localizationData.country
+        })
+        .save();
+      if (localization) {
+        const owner = getOwner(this);
+        this.router
+          .transitionTo("forecast", localization)
+          .then(() => owner.lookup("route:forecast").refresh());
+      }
+
       return this.set("error", "Some bug occur");
     }
   }

@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: "weather-info",
     environment,
     OPENWEATHERMAP_API_KEY: process.env.OPENWEATHERMAP_API_KEY,
+    GOOGLE_PLACE_API_KEY: process.env.GOOGLE_PLACE_API_KEY,
     rootURL: "/",
     locationType: "auto",
     EmberENV: {
@@ -21,7 +22,8 @@ module.exports = function(environment) {
     APP: {},
 
     "place-autocomplete": {
-      key: process.env.GOOGLE_PLACE_API_KEY
+      key: process.env.GOOGLE_PLACE_API_KEY,
+      language: "en"
     }
   };
 
