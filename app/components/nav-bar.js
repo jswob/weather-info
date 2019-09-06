@@ -1,9 +1,7 @@
 import Component from "@ember/component";
 import { inject as service } from "@ember/service";
-import { getOwner } from "@ember/application";
 
 export default Component.extend({
-  router: service(),
   store: service(),
   tagName: "nav",
   classNames: ["nav-bar", "layout-row", "layout-align-center-center"],
@@ -20,10 +18,7 @@ export default Component.extend({
         })
         .save();
       if (localization) {
-        const owner = getOwner(this);
-        this.router
-          .transitionTo("forecast", localization)
-          .then(() => owner.lookup("route:forecast").refresh());
+        return this.transitionToForecast(localization.id)
       }
 
       return this.set("error", "Some bug occur");

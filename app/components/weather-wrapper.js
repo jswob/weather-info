@@ -5,4 +5,5 @@ export default Component.extend({
     this._super(...arguments);
     this.set("selectedForecast", this.get("forecasts").toArray()[0]);
   },
+  isCelsius: true
 });
