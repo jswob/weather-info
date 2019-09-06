@@ -16,6 +16,11 @@ export default Component.extend({
     const icon = this.get("forecast.icon");
     return `http://openweathermap.org/img/wn/${icon}@2x.png`;
   }),
+  convertedTemp: computed("forecast.temp", "isCelsius", function() {
+    const temp = this.get("forecast.temp");
+    if (this.get("isCelsius")) return Math.round(temp) + " °C ";
+    return Math.round(temp * 9 / 5 + 32) + " F ";
+  }),
   actions: {
     selectForecast() {
       const forecast = this.get("forecast");

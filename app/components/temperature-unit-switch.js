@@ -6,8 +6,8 @@ export default Component.extend({
   isCelsius: true,
   convertedTemp: computed("temperature", "isCelsius", function() {
     const temp = this.get("temperature");
-    if (this.get("isCelsius")) return Math.round(temp - 273) + " °C ";
-    return Math.round((9 / 5) * (temp - 273) + 32) + " F ";
+    if (this.get("isCelsius")) return Math.round(temp) + " °C ";
+    return Math.round((temp * 9) / 5 + 32) + " F ";
   }),
   actions: {
     changeToCelsius() {
