@@ -8,7 +8,7 @@ module("Integration | Component | main-weather", function(hooks) {
   setupRenderingTest(hooks);
 
   test("should display all necessary data", async function(assert) {
-    assert.expect(7);
+    assert.expect(8);
 
     const weatherData = {
       temp: 298.77,
@@ -19,7 +19,8 @@ module("Integration | Component | main-weather", function(hooks) {
       icon: "10n",
       wind: 3.61,
       time: 1406106000,
-      city: "Wisla"
+      city: "Wisla",
+      cloudiness: 88
     };
     this.set("selectedForecast", weatherData);
     await render(hbs`<MainWeather @weather={{this.selectedForecast}} />`);
@@ -58,6 +59,11 @@ module("Integration | Component | main-weather", function(hooks) {
       this.element.querySelector(".weather-icon").src,
       "http://openweathermap.org/img/wn/10n@2x.png",
       "image has correct source"
+    );
+    assert.equal(
+      this.element.querySelector(".cloudiness").textContent,
+      "Cloudiness: 88%",
+      "cloudiness is ok"
     );
   });
 

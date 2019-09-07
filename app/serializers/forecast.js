@@ -18,7 +18,8 @@ export default DS.JSONAPISerializer.extend({
           icon: forecast.weather[0].icon,
           wind: forecast.wind.speed,
           time: forecast.dt_txt,
-          city: payload.city.name
+          city: payload.city.name,
+          cloudiness: forecast.clouds.all
         }
       });
     });

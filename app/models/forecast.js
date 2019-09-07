@@ -10,5 +10,6 @@ export default Model.extend({
   icon: attr("string"),
   wind: attr("string"),
   time: attr("date"),
-  city: attr("string")
+  city: attr("string"),
+  cloudiness: attr("number")
 });
