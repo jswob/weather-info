@@ -1,4 +1,4 @@
-<div class="single-forecast {{if this.isActive "active"}}" onclick={{action "selectForecast"}}>
+<div class="single-forecast layout-column {{if this.isActive "active"}}" onclick={{action "selectForecast"}}>
   <span class="day">{{moment-format this.convertedTime "dd"}}</span>
   <span class="hour">{{moment-format this.convertedTime "k a"}}</span>
   <WeatherIcon @icon={{this.forecast.icon}} @description={{this.weather.description}} />

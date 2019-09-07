@@ -13,6 +13,30 @@ body > .ember-view {
   height: 100%;
 }
 
+.single-forecast {
+  text-align: center;
+  max-width: 90px;
+  border-right: 1px solid black;
+  padding: 7px 4px;
+  cursor: pointer;
+
+  &.active {
+    background-color: lightgray;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor: default;
+  }
+
+  &:last-child {
+    border-right: 0px;
+  }
+
+  .weather-icon {
+    height: 60px;
+    width: 60px;
+  }
+}
+
 md-autocomplete {
   width: 80%;
   max-width: 600px !important;
