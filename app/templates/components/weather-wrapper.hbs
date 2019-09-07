@@ -1,4 +1,6 @@
 <MainWeather @weather={{this.selectedForecast}} @isCelsius={{this.isCelsius}} />
-{{#each this.forecasts as |forecast|}}
-  <SingleForecast @forecast={{forecast}} @selectedForecast={{this.selectedForecast}} @isCelsius={{this.isCelsius}} />
-{{/each}}
+<div class="layout-row forecasts-list">
+  {{#each this.forecasts as |forecast|}}
+    <SingleForecast @forecast={{forecast}} @selectedForecast={{this.selectedForecast}} @isCelsius={{this.isCelsius}} />
+  {{/each}}
+</div>

@@ -13,22 +13,34 @@ body > .ember-view {
   height: 100%;
 }
 
+.weather-wrapper {
+  max-width: 1000px;
+  min-width: 100px;
+  width: 100%;
+  overflow: hidden;
+
+  .forecasts-list {
+    width: 100%;
+    overflow-x: scroll;
+  }
+}
+
 .single-forecast {
   text-align: center;
   max-width: 90px;
-  border-right: 1px solid black;
+  border-right: 1px solid purple;
   padding: 7px 4px;
   cursor: pointer;
 
   &.active {
     background-color: lightgray;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid purple;
+    border-bottom: 1px solid purple;
     cursor: default;
   }
 
-  &:last-child {
-    border-right: 0px;
+  &:first-child {
+    border-left: 1px solid purple;
   }
 
   .weather-icon {
