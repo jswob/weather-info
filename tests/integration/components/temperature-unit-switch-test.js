@@ -9,14 +9,14 @@ module("Integration | Component | temperature-unit-switch", function(hooks) {
   test("should correctly show temperature", async function(assert) {
     assert.expect(1);
 
-    this.set("temperature", 312.23);
+    this.set("temperature", 27);
     await render(
       hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`
     );
 
     assert.equal(
       this.element.querySelector(".temp-wrapper").textContent.trim(),
-      "39 °C °C|F",
+      "27 °C °C|F",
       "temperature is ok"
     );
   });
@@ -24,14 +24,14 @@ module("Integration | Component | temperature-unit-switch", function(hooks) {
   test("should change temperature unit on click on the unit-button", async function(assert) {
     assert.expect(3);
 
-    this.set("temperature", 312.23);
+    this.set("temperature", 27);
     await render(
       hbs`<TemperatureUnitSwitch @temperature={{this.temperature}}/>`
     );
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "39 °C ",
+      "27 °C ",
       "on start show temperature in celsius"
     );
 
@@ -39,7 +39,7 @@ module("Integration | Component | temperature-unit-switch", function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "103 F ",
+      "81 F ",
       "after clicking on fahrenheit-button show temperature in fahrenheit"
     );
 
@@ -47,7 +47,7 @@ module("Integration | Component | temperature-unit-switch", function(hooks) {
 
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "39 °C ",
+      "27 °C ",
       "after clicking on celsius-button show temperature in celsius"
     );
   });

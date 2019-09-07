@@ -8,7 +8,7 @@ module("Integration | Component | single-forecast", function(hooks) {
 
   test("should correctly display all necessary data", async function(assert) {
     const weatherData = {
-      temp: 298.77,
+      temp: 26,
       icon: "10n",
       time: 1406106000
     };
@@ -22,7 +22,7 @@ module("Integration | Component | single-forecast", function(hooks) {
     );
     assert.equal(
       this.element.querySelector(".hour").textContent,
-      "7 am",
+      "7 AM",
       "hour is correctly displayed"
     );
     assert.equal(
@@ -32,7 +32,7 @@ module("Integration | Component | single-forecast", function(hooks) {
     );
     assert.equal(
       this.element.querySelector(".temp").textContent,
-      "26 °C ",
+      "79 F ",
       "temperature is correctly displayed"
     );
   });

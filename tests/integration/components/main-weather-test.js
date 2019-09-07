@@ -11,7 +11,7 @@ module("Integration | Component | main-weather", function(hooks) {
     assert.expect(8);
 
     const weatherData = {
-      temp: 298.77,
+      temp: 26,
       pressure: 1013,
       humidity: 62,
       country: "PL",
@@ -37,7 +37,7 @@ module("Integration | Component | main-weather", function(hooks) {
     );
     assert.equal(
       this.element.querySelector(".temp-wrapper").textContent.trim(),
-      "26 °C °C|F",
+      "79 F °C|F",
       "temperature is ok"
     );
     assert.equal(
@@ -52,7 +52,7 @@ module("Integration | Component | main-weather", function(hooks) {
     );
     assert.equal(
       this.element.querySelector(".time").textContent,
-      "Sa, 7 am",
+      "Sa, 7 AM",
       "time is ok"
     );
     assert.equal(
