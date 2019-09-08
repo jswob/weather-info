@@ -75,6 +75,11 @@ body > .ember-view {
     .temp {
       font-size: 64px;
     }
+
+    button {
+      border: none;
+      background-color: rgba(0, 0, 0, 0)
+    }
   }
   
   .weather-data {
