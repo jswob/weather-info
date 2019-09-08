@@ -2,7 +2,7 @@ import Component from "@ember/component";
 import { computed } from "@ember/object";
 
 export default Component.extend({
-  classNames: ["temp-wrapper"],
+  classNames: ["temp-wrapper", "layout-row", "layout-align-center-start"],
   isCelsius: true,
   convertedTemp: computed("temperature", "isCelsius", function() {
     const temp = this.get("temperature");

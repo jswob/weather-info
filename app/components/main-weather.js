@@ -5,7 +5,8 @@ import { inject as service } from "@ember/service";
 
 export default Component.extend({
   media: service(),
-  classNameBindings: ["mobile"],
+  classNames: ["main-weather", "layout-align-start-start"],
+  classNameBindings: ["mobile", "mobile:layout-column:layout-row"],
   mobile: alias("media.isMobile"),
   convertedTime: computed("weather.time", function() {
     return new Date(this.get("weather.time"));

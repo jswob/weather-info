@@ -1,24 +1,31 @@
 {{#if media.isDesktop}}
-  <div class="left">
+  <div class="left flex-40 layout-column layout-align-start-start">
     <h3 class="localization">{{this.localization}}</h3>
     <h5 class="description">{{this.weather.description}}</h5>
     <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
     <TemperatureUnitSwitch @temperature={{this.weather.temp}} @isCelsius={{this.isCelsius}}/>
   </div>
-  <div class="right">
-    <span class="time">{{moment-format convertedTime "dd, h A" class="time"}}</span>
-    <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>
-    <span class="wind">Wind: {{this.weather.wind}} km/h</span>
-    <span class="humidity">Humidity: {{this.weather.humidity}}%</span>
-    <span class="cloudiness">Cloudiness: {{this.weather.cloudiness}}%</span>
+  <div class="right flex-60">
+    <div class="time-wrapper layout-row layout-align-center-end">
+      <span class="time">{{moment-format convertedTime "dd, h A" class="time"}}</span>
+    </div>
+    <div class="weather-data layout-column layout-align-center-start">
+      <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>
+      <span class="wind">Wind: {{this.weather.wind}} km/h</span>
+      <span class="humidity">Humidity: {{this.weather.humidity}}%</span>
+      <span class="cloudiness">Cloudiness: {{this.weather.cloudiness}}%</span>
+    </div>
   </div>
 {{else}}
   <h3 class="localization">{{this.localization}}</h3>
   <span class="time">{{moment-format convertedTime "dd, h A" class="time"}}</span>
   <WeatherIcon @icon={{this.weather.icon}} @description={{this.weather.description}} />
   <TemperatureUnitSwitch @temperature={{this.weather.temp}} @isCelsius={{this.isCelsius}} />
-  <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>
-  <span class="wind">Wind: {{this.weather.wind}} km/h</span>
-  <span class="humidity">Humidity: {{this.weather.humidity}}%</span>
-  <span class="cloudiness">Cloudiness: {{this.weather.cloudiness}}%</span>
+  <div class="weather-data layout-column layout-align-center-center">
+    <span class="pressure">Pressure: {{this.weather.pressure}} hpa</span>
+    <span class="wind">Wind: {{this.weather.wind}} km/h</span>
+    <span class="humidity">Humidity: {{this.weather.humidity}}%</span>
+    <span class="cloudiness">Cloudiness: {{this.weather.cloudiness}}%</span>
+  </div>
 {{/if}}
+{{this.layoutType}}

@@ -3,14 +3,87 @@ $primary: "purple";
 @import "./x-form.scss";
 @import "./find-localization.scss";
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 html,
 body {
   position: relative;
   height: 100%;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body > .ember-view {
   height: 100%;
+}
+
+.main-weather {
+  width: 100%;
+  padding: 0px 0px 0px 20px;
+  font-size: 28px;
+  
+  &.mobile {
+    .weather-data {
+      text-align: center;
+      font-size: 24px;
+      height: 100%;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 15px;
+
+      span {
+        margin: 0px;
+      }
+    }
+  }
+
+  .right {
+    margin-top: 35px;
+  }
+
+  .time-wrapper {
+    width: 100%;
+
+    .time {
+      text-align: right;
+      width: 100%;
+      // float: right;
+    }
+  }
+
+
+  .weather-icon {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+
+  .localization {
+    font-size: 42px;
+    margin: 30px 0px 10px 0px;
+    width: 100%;
+  }
+
+  .description {
+    text-align: center;
+    margin: 10px 0px;
+    width: 100%;
+  }
+
+  .temp-wrapper {
+    width: 100%;
+
+    .temp {
+      font-size: 64px;
+    }
+  }
+  
+  .weather-data {
+    height: 300px;
+    font-size: 36px;
+    span {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .weather-wrapper {
