@@ -3,13 +3,13 @@ $primary: "purple";
 @import "./x-form.scss";
 @import "./find-localization.scss";
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 html,
 body {
   position: relative;
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body > .ember-view {
@@ -20,7 +20,7 @@ body > .ember-view {
   width: 100%;
   padding: 0px 0px 0px 20px;
   font-size: 28px;
-  
+
   &.mobile {
     .weather-data {
       text-align: center;
@@ -50,7 +50,6 @@ body > .ember-view {
     }
   }
 
-
   .weather-icon {
     width: 200px;
     height: 200px;
@@ -78,10 +77,10 @@ body > .ember-view {
 
     button {
       border: none;
-      background-color: rgba(0, 0, 0, 0)
+      background-color: rgba(0, 0, 0, 0);
     }
   }
-  
+
   .weather-data {
     height: 300px;
     font-size: 36px;
@@ -107,6 +106,10 @@ body > .ember-view {
   text-align: center;
   max-width: 90px;
   border-right: 1px solid purple;
+  border-left: 0px;
+  border-bottom: 0px;
+  border-top: 0px;
+  background-color: rgba(0, 0, 0, 0);
   padding: 7px 4px;
   cursor: pointer;
 
@@ -119,6 +122,10 @@ body > .ember-view {
 
   &:first-child {
     border-left: 1px solid purple;
+  }
+
+  span {
+    width: 100%;
   }
 
   .weather-icon {

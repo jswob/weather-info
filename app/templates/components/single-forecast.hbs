@@ -1,6 +1,6 @@
-<div class="single-forecast layout-column {{if this.isActive "active"}}" onclick={{action "selectForecast"}}>
+<button class="single-forecast layout-column {{if this.isActive "active"}}" onclick={{action "selectForecast"}}>
   <span class="day">{{moment-format this.convertedTime "dd"}}</span>
   <span class="hour">{{moment-format this.convertedTime "h A"}}</span>
   <WeatherIcon @icon={{this.forecast.icon}} @description={{this.weather.description}} />
   <span class="temp">{{convertedTemp}}</span>
-</div>
+</button>
